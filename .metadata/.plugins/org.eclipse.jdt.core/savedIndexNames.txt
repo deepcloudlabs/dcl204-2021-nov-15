@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+D:\var\workspace\dcl\dcl-204\2021\nov-15\.metadata\.plugins\org.eclipse.jdt.core
+4055110536.index
+4237658279.index
+1865797976.index
