@@ -13,5 +13,6 @@ public class BankingApplication {
 		System.err.println("Balance: "+acc.getBalance());
 		acc.withdraw(500);
 		System.err.println("Balance: "+acc.getBalance());
+		System.err.println(acc.toString());
 	}
 }
