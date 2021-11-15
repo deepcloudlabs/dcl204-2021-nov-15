@@ -3,7 +3,10 @@ package com.example.banking.domain;
 // Ctrl + Shift + + : Zoom in
 // Ctrl + -         : Zoom out
 // + Mouse Wheel
-public class Account {
+public class Account { 
+	// Domain Class -> i) Entity Class, Identity -> iban
+	//                ii) Value Object -> Immutable
+	//               iii) Aggregate -> Entity Root 
 	// Class -> Encapsulation: Members -> i) Data ii) Methods
 	// attributes
 	private final String iban; // attribute/state/data/property
