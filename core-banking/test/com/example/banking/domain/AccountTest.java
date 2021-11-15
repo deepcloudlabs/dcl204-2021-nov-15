@@ -4,21 +4,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 // CUT: Class Under Test
 class AccountTest { // CUT -> Account
 
     // MUT : Method Under Test
-	@Test
+	@ParameterizedTest
 	@DisplayName("creates an Account object successfuly")
-	void createAccountObjectWithSuccess() {
+	@CsvFileSource(resources = "/accounts.csv")
+	void createAccountObjectWithSuccess(String iban, double balance) {
 		// 1. Fixture/Setup
 		// 2. Call Exercise Method
-		Account acc = new Account("tr1", 1_000);
+		Account acc = new Account(iban, balance);
 		// 3. Verification
 		assertNotNull(acc);
-		assertEquals("tr1", acc.getIban());
-		assertEquals(1_000, acc.getBalance());
+		assertEquals(iban, acc.getIban());
+		assertEquals(balance, acc.getBalance());
 		// 4. Tear-down
 	}
 
