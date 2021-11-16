@@ -2,6 +2,7 @@ package com.example.banking.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 // Entity -> Identity 
 public class Customer {
@@ -13,6 +14,12 @@ public class Customer {
 		this.tcKimlikNo = tcKimlikNo;
 		this.fullname = fullname;
 		accounts = new ArrayList<>();
+	}
+
+	public Customer(String tcKimlikNo, String fullname, List<Account> accounts) {
+		this.tcKimlikNo = tcKimlikNo;
+		this.fullname = fullname;
+		this.accounts = accounts;
 	}
 
 	public String getFullname() {
@@ -32,22 +39,31 @@ public class Customer {
 	}
 
 	public void addAccount(Account account) {
-		
+		accounts.add(account);
 	}
 
 	public Account closeAccount(String iban) {
-		
+		Account account = getAccount(iban);
+		double balance = account.getBalance();
+		if(balance>0) account.withdraw(balance);
+		if (Objects.nonNull(account))
+		   accounts.remove(account);
+		return account;
 	}
 
-	public Account findAccount(String iban) {
-		
+	public Account getAccount(String iban) {
+		for (Account account : accounts) {
+			if (iban.equals(account.getIban()))
+				return account;
+		}
+		return null;
 	}
 
 	public Account getAccount(int index) {
-		
+		return accounts.get(index);
 	}
 
 	public int getNumberOfAccounts() {
-		
+		return accounts.size();
 	}
 }

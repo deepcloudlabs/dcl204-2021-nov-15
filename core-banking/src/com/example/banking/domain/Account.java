@@ -12,12 +12,12 @@ public class Account {
 	// Class -> Encapsulation: Members -> i) Data ii) Methods
 	// attributes
 	private final String iban; // attribute/state/data/property
-	private double balance;
+	protected double balance; // default permission -> package private
 
 	// methods
 	// i) constructor -> new object? -> constructor initializes state
 	// Alt +Shift + O -> Alt + Insert
-	public Account(String iban, double balance) {
+	public Account(String iban, double balance) { // Signature: (String,double)
 		this.iban = iban;
 		this.balance = balance;
 	}
