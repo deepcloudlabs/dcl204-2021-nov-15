@@ -1,6 +1,6 @@
 package com.example.banking.domain;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,11 +9,11 @@ public class Customer {
 	private final String tcKimlikNo;
 	private String fullname;
 	private List<Account> accounts; // One-to-Many: i) Array ii) Collection
-	
+
 	public Customer(String tcKimlikNo, String fullname) {
 		this.tcKimlikNo = tcKimlikNo;
 		this.fullname = fullname;
-		accounts = new ArrayList<>();
+		accounts = new LinkedList<>();
 	}
 
 	public Customer(String tcKimlikNo, String fullname, List<Account> accounts) {
@@ -45,9 +45,10 @@ public class Customer {
 	public Account closeAccount(String iban) {
 		Account account = getAccount(iban);
 		double balance = account.getBalance();
-		if(balance>0) account.withdraw(balance);
+		if (balance > 0)
+			account.withdraw(balance);
 		if (Objects.nonNull(account))
-		   accounts.remove(account);
+			accounts.remove(account);
 		return account;
 	}
 

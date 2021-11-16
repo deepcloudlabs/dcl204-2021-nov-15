@@ -5,10 +5,10 @@ import java.util.Objects;
 // Ctrl + Shift + + : Zoom in
 // Ctrl + -         : Zoom out
 // + Mouse Wheel
-public class Account { 
+public class Account {
 	// Domain Class -> i) Entity Class, Identity -> iban
-	//                ii) Value Object -> Immutable
-	//               iii) Aggregate -> Entity Root 
+	// ii) Value Object -> Immutable
+	// iii) Aggregate -> Entity Root
 	// Class -> Encapsulation: Members -> i) Data ii) Methods
 	// attributes
 	private final String iban; // attribute/state/data/property
@@ -18,6 +18,7 @@ public class Account {
 	// i) constructor -> new object? -> constructor initializes state
 	// Alt +Shift + O -> Alt + Insert
 	public Account(String iban, double balance) { // Signature: (String,double)
+		super();
 		this.iban = iban;
 		this.balance = balance;
 	}
@@ -41,6 +42,7 @@ public class Account {
 
 	// (Eclipse) Ctrl + Shift + F -> (IntelliJ IDEA) Ctrl + Alt + L
 	public boolean withdraw(double amount) {
+		System.err.println("Account::withdraw");
 		if (amount <= 0.0) // validation
 			return false;
 		if (amount > balance) // business rule
@@ -70,7 +72,5 @@ public class Account {
 		Account other = (Account) obj;
 		return Objects.equals(iban, other.iban);
 	}
-	
-	
-	
+
 }

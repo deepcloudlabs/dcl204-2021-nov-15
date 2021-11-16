@@ -8,13 +8,13 @@ public class BankingApplication {
 	public static void main(String[] args) {
 		Account acc1 = new Account("tr1", 1_000); // creates an object
 		acc1.withdraw(500);
-		System.err.println("Balance: "+acc1.getBalance());
+		System.err.println("Balance: " + acc1.getBalance());
 		acc1.withdraw(500);
-		System.err.println("Balance: "+acc1.getBalance());
+		System.err.println("Balance: " + acc1.getBalance());
 		acc1.withdraw(500);
-		System.err.println("Balance: "+acc1.getBalance());
+		System.err.println("Balance: " + acc1.getBalance());
 		System.err.println(acc1.toString());
 		Account acc2 = new Account("tr1", 2_000); // creates an object
-		System.err.println("acc1.equals(acc2): "+acc1.equals(acc2));
+		System.err.println("acc1.equals(acc2): " + acc1.equals(acc2));
 	}
 }

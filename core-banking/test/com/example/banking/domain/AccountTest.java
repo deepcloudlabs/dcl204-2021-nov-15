@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 // CUT: Class Under Test
 class AccountTest { // CUT -> Account
 
-    // MUT : Method Under Test
+	// MUT : Method Under Test
 	@ParameterizedTest
 	@DisplayName("creates an Account object successfuly")
 	@CsvFileSource(resources = "/accounts.csv")
@@ -34,10 +34,10 @@ class AccountTest { // CUT -> Account
 		boolean result = acc.deposit(-1);
 		// 3. verification
 		assertFalse(result);
-		assertEquals(1_000,acc.getBalance());
+		assertEquals(1_000, acc.getBalance());
 		// 4. Tear-down
 	}
-	
+
 	@Test
 	@DisplayName("deposit with positive amount should success")
 	void depositWithPositiveAmountSuccess() throws Exception {
@@ -47,10 +47,10 @@ class AccountTest { // CUT -> Account
 		boolean result = acc.deposit(1);
 		// 3. verification
 		assertTrue(result);
-		assertEquals(1_001,acc.getBalance());
+		assertEquals(1_001, acc.getBalance());
 		// 4. Tear-down
 	}
-	
+
 	@Test
 	@DisplayName("withdraw with negative amount should fail")
 	void withdrawWithNegativeAmountFails() throws Exception {
@@ -60,7 +60,7 @@ class AccountTest { // CUT -> Account
 		boolean result = acc.withdraw(-1);
 		// 3. verification
 		assertFalse(result);
-		assertEquals(1_000,acc.getBalance());
+		assertEquals(1_000, acc.getBalance());
 		// 4. Tear-down
 	}
 
@@ -73,10 +73,10 @@ class AccountTest { // CUT -> Account
 		boolean result = acc.withdraw(1_001);
 		// 3. verification
 		assertFalse(result);
-		assertEquals(1_000,acc.getBalance());
+		assertEquals(1_000, acc.getBalance());
 		// 4. Tear-down
 	}
-	
+
 	@Test
 	@DisplayName("withdraw all balance should success")
 	void withdrawAllBalanceSuccess() throws Exception {
@@ -86,10 +86,10 @@ class AccountTest { // CUT -> Account
 		boolean result = acc.withdraw(1.1);
 		// 3. verification
 		assertTrue(result);
-		assertEquals(0.9,acc.getBalance(),0.0001);
+		assertEquals(0.9, acc.getBalance(), 0.0001);
 		// 4. Tear-down
 	}
-	
+
 	@Test
 	@DisplayName("toString")
 	void toStringTest() throws Exception {
