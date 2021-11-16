@@ -81,12 +81,12 @@ class AccountTest { // CUT -> Account
 	@DisplayName("withdraw all balance should success")
 	void withdrawAllBalanceSuccess() throws Exception {
 		// 1. Fixture/Setup
-		Account acc = new Account("tr1", 1_000);
+		Account acc = new Account("tr1", 2);
 		// 2. Call Exercise Method
-		boolean result = acc.withdraw(1_000);
+		boolean result = acc.withdraw(1.1);
 		// 3. verification
 		assertTrue(result);
-		assertEquals(0,acc.getBalance());
+		assertEquals(0.9,acc.getBalance(),0.0001);
 		// 4. Tear-down
 	}
 	

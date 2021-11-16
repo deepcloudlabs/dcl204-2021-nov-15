@@ -1,5 +1,7 @@
 package com.example.banking.domain;
 
+import java.util.Objects;
+
 // Ctrl + Shift + + : Zoom in
 // Ctrl + -         : Zoom out
 // + Mouse Wheel
@@ -51,5 +53,24 @@ public class Account {
 	public String toString() {
 		return "Account [iban=" + iban + ", balance=" + balance + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(iban);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Account other = (Account) obj;
+		return Objects.equals(iban, other.iban);
+	}
+	
+	
 	
 }
