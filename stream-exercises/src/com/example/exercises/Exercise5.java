@@ -24,27 +24,28 @@ public class Exercise5 {
 		         .map(Country::getContinent)
 		         .distinct()
 		         .sorted()
-		         .forEach(System.err::println);
+		         .forEach(System.err::println); // terminal
 
 		countries.stream()
-		         .collect(Collectors.groupingBy(Country::getContinent,Collectors.counting()))
+		         .collect(Collectors.groupingBy(Country::getContinent,Collectors.counting())) // terminal
 		         .forEach((continent,count) -> System.err.println(continent+": "+count));
 		countries.stream()
 		         .collect(Collectors.groupingBy(Country::getContinent,Collectors.summingLong(Country::getPopulation)))
 		         .forEach((continent,count) -> System.err.println(continent+": "+count));
 		
 		countries.stream()
-		         .max(Comparator.comparing(Country::getPopulation))
+		         .max(Comparator.comparing(Country::getPopulation)) // terminal
 		         .ifPresent(System.err::println);
 		
-		countries.stream()
-				 .mapToInt(country -> country.getCapital())
+		countries.stream() // intermediary methods, terminal methods
+				 // .mapToInt(country -> country.getCapital())
+				 .mapToInt(Country::getCapital)
 				 //.map( capitalId -> countryDao.findCityById(capitalId))
 				 .mapToObj( countryDao::findCityById)
 				 //.filter(city -> city!= null)
 				 .filter(Objects::nonNull)
-				 .max(Comparator.comparing(City::getPopulation))
-				 .ifPresent(System.err::println);
+				 .max(Comparator.comparing(City::getPopulation)) // terminal -> pipeline // python, javascript: generator function
+				 .ifPresent(System.err::println); // Lazy Evaluation
 				 
 	}
 
