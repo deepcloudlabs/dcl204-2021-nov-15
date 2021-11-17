@@ -1,10 +1,11 @@
 package com.example.exercises;
 
-import java.util.Map;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
-import com.example.dao.CountryDao;
 import com.example.dao.InMemoryWorldDao;
+import com.example.dao.WorldDao;
+import com.example.domain.City;
 import com.example.domain.Country;
 
 /**
@@ -13,7 +14,7 @@ import com.example.domain.Country;
  *
  */
 public class Exercise5 {
-	private static final CountryDao countryDao = InMemoryWorldDao.getInstance();
+	private static final WorldDao countryDao = InMemoryWorldDao.getInstance();
 
 	public static void main(String[] args) {
 		var countries = countryDao.findAllCountries();
@@ -27,6 +28,22 @@ public class Exercise5 {
 		countries.stream()
 		         .collect(Collectors.groupingBy(Country::getContinent,Collectors.counting()))
 		         .forEach((continent,count) -> System.err.println(continent+": "+count));
+		countries.stream()
+		         .collect(Collectors.groupingBy(Country::getContinent,Collectors.summingLong(Country::getPopulation)))
+		         .forEach((continent,count) -> System.err.println(continent+": "+count));
+		
+		countries.stream()
+		         .max(Comparator.comparing(Country::getPopulation))
+		         .ifPresent(System.err::println);
+		
+		countries.stream()
+				 .mapToInt(country -> country.getCapital())
+				 //.map( capitalId -> countryDao.findCityById(capitalId))
+				 .mapToObj( countryDao::findCityById)
+				 .filter(city -> city!= null)
+				 .max(Comparator.comparing(City::getPopulation))
+				 .ifPresent(System.err::println);
+				 
 	}
 
 }
