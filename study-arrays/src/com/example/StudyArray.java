@@ -55,7 +55,10 @@ public class StudyArray {
 		IntUnaryOperator squared = q -> q * q;
 		// numbers.filter(n => n%2 == 0).map( p => p*p ).reduce((s,r) => s+r, 0)
 		sum = Arrays.stream(numbers).parallel() // multi-core, J9 -> GPU
-				.filter(n -> n % 2 == 0).map(squared).boxed().reduce(Integer::sum) // Method Reference
+				.filter(n -> n % 2 == 0) // higher order function
+				.map(squared) // higher order function
+				.boxed()
+				.reduce(Integer::sum) // higher order function, Method Reference
 				.get();
 		Arrays.parallelSort(numbers); // CPU -> GPU
 		System.err.println("sum: " + sum);

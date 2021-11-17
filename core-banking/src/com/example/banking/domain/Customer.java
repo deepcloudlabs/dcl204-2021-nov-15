@@ -3,6 +3,7 @@ package com.example.banking.domain;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 // Entity -> Identity 
 public class Customer {
@@ -58,6 +59,11 @@ public class Customer {
 				return account;
 		}
 		return null;
+	}
+	public Optional<Account> getAccountStream(String iban) {
+		// filter: higher order function
+		return accounts.stream().filter(account -> account.getIban().equalsIgnoreCase(iban))
+				                .findFirst();
 	}
 
 	public Account getAccount(int index) {

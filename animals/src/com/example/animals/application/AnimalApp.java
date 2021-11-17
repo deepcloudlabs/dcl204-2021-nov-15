@@ -21,24 +21,24 @@ public class AnimalApp {
 			new Fish("Nemo"),
 			new Spider()
 		);
-		for (Animal animal : animals) { // External Loop: animals
-			animal.walk();
-			animal.eat();
-			if (animal instanceof Pet) {
-				((Pet)animal).play();
-			}
-		}
+//		for (Animal animal : animals) { // External Loop: animals
+//			animal.walk();
+//			animal.eat();
+//			if (animal instanceof Pet) {
+//				((Pet)animal).play();
+//			}
+//		}
 		// Functional Programming -> One-Liner
 		Consumer<Animal> walk = Animal::walk;
 		ABC armut = new ABC();
-		Consumer<Animal> eat = ABC::haveGun; // armut::haveSun; // Gun::haveGun; // Animal::eat;
+		Consumer<Animal> eat = Animal::eat; //ABC::haveGun; // armut::haveSun; // Gun::haveGun; // Animal::eat;
 		int p=0; // Stack
 		Consumer<Animal> playIfAnimal = animal -> {
 			// Error: not allowed, only read-only operations allowed! p++;
 			if (animal instanceof Pet) ((Pet)animal).play();
 		};
 		// Internal Loop
-		animals.forEach(walk.andThen(eat).andThen(playIfAnimal)); 
+		animals.parallelStream().forEach(walk.andThen(eat).andThen(playIfAnimal)); 
 		int x = 42; // effectively final
 		//x++;
 		String y = new String("Jack"); // object reference
