@@ -1,7 +1,9 @@
 package com.example.exercises;
 
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import com.example.domain.Director;
 import com.example.domain.Movie;
@@ -22,8 +24,9 @@ public class Exercise1 {
         movies.stream()
               .map( Movie::getDirectors )
               .flatMap( Collection::stream ) // flattening
-              .collect(Collectors.groupingBy(Director::getName,Collectors.counting()))
+              .collect(groupingBy(Director::getName,counting()))
               .forEach( (directorName,count) -> System.err.println(directorName+": "+count));
+        
 	}
 
 }
