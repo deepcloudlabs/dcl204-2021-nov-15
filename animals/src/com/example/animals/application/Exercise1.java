@@ -1,7 +1,6 @@
 package com.example.animals.application;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.example.animals.domain.Animal;
 import com.example.animals.domain.Cat;

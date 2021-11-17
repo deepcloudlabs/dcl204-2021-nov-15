@@ -11,6 +11,7 @@ import com.example.animals.domain.Spider;
 
 public class AnimalApp {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		List<Animal> animals = List.of(
 			new Spider(),
