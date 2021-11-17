@@ -1,6 +1,7 @@
 package com.example.exercises;
 
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import com.example.dao.InMemoryWorldDao;
@@ -40,7 +41,8 @@ public class Exercise5 {
 				 .mapToInt(country -> country.getCapital())
 				 //.map( capitalId -> countryDao.findCityById(capitalId))
 				 .mapToObj( countryDao::findCityById)
-				 .filter(city -> city!= null)
+				 //.filter(city -> city!= null)
+				 .filter(Objects::nonNull)
 				 .max(Comparator.comparing(City::getPopulation))
 				 .ifPresent(System.err::println);
 				 
