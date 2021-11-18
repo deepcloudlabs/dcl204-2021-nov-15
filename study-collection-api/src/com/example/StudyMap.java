@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class StudyMap {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Map<String,Integer> areaCodes = new HashMap<>(); // LinkedHashMap, TreeMap
 		areaCodes.put("ankara", 312);

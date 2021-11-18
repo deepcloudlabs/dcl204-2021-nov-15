@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.example.event.TradeEvent;
 
+@SuppressWarnings("deprecation")
 public class StudyLegacyObserver {
 
 	public static void main(String[] args) {
@@ -33,6 +34,7 @@ public class StudyLegacyObserver {
 
 }
 
+@SuppressWarnings("deprecation")
 class TradeObservable extends Observable {
 
 	@Override
