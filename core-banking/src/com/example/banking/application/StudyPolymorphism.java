@@ -4,11 +4,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import com.example.banking.domain.Account;
 import com.example.banking.domain.CheckingAccount;
+import com.example.banking.domain.InsufficientBalanceException;
 
 public class StudyPolymorphism {
 
 	@SuppressWarnings("unused")
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InsufficientBalanceException {
 		// Polymorphism -> i) Runtime
 		Account acc; // T2
 		if (ThreadLocalRandom.current().nextBoolean())
