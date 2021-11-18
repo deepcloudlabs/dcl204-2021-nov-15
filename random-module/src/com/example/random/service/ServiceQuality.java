@@ -8,5 +8,11 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ServiceQuality {
-	QualityLevel value();
+	QualityLevel value() default QualityLevel.FAST;
+	// byte, short, int,     long, float, double, char     , boolean, String
+	// Byte, Short, Integer, Long, Float, Double, Character, Boolean
+	// byte[], short[], int[],     long[], float[], double[], char[]     , boolean[], String[]
+	// Byte[], Short[], Integer[], Long[], Float[], Double[], Character[], Boolean[]
+	// enum, enum[]
+	// @nnotation, @nnotation[] 
 }
